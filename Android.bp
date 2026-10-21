@@ -1,9 +1,18 @@
-cc_binary {
-    name: "tqftpserv",
-    vendor: true,
-    srcs: [
-        "tqftpserv.c",
-        "translate.c",
-    ],
-    shared_libs: ["libqrtr"],
+package { default_applicable_licenses: ["aera_tqftpserv_license"] }
+license {
+    name: "aera_tqftpserv_license",
+    visibility: [":__subpackages__"],
+    license_kinds: ["SPDX-license-identifier-BSD-3-Clause"],
+    license_text: ["LICENSE"],
+}
+filegroup {
+    name: "aera_tqftpserv_sources",
+    srcs: ["tqftpserv.c"],
+    visibility: ["//device/oneplus/infiniti/mobile_data"],
+}
+cc_library_headers {
+    name: "aera_tqftpserv_headers",
+    recovery_available: true,
+    export_include_dirs: ["."],
+    visibility: ["//device/oneplus/infiniti/mobile_data"],
 }
